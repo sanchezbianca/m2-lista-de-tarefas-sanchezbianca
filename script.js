@@ -55,3 +55,21 @@ function createTaskItem(taskTitle, taskType) {
 }
 
 renderElements(tasks, createTaskItem);
+
+const formButton = document.querySelector(".form__button--add-task");
+
+formButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  const inputText = document.querySelector(".form__input--text");
+  const inputSelect = document.querySelector(".form__input--priority");
+
+  const newTask = {
+    title: inputText.value,
+    type:
+      inputSelect.value.charAt(0).toUpperCase() + inputSelect.value.slice(1),
+  };
+
+  tasks.push(newTask);
+  renderElements(tasks, createTaskItem);
+});

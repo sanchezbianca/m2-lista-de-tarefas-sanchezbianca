@@ -31,6 +31,19 @@ function createTaskItem(taskTitle, taskType) {
   const p = document.createElement("p");
   const button = document.createElement("button");
 
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const item = event.target.closest("li").textContent;
+    const index = tasks.findIndex((arrayTitle) => {
+      return arrayTitle.title === item;
+    });
+
+    tasks.splice(index, 1);
+    renderElements(tasks, createTaskItem);
+  });
+
   li.classList.add("task__item");
   div.classList.add("task-info__container");
   span.classList.add("task-type");
@@ -60,6 +73,7 @@ const formButton = document.querySelector(".form__button--add-task");
 
 formButton.addEventListener("click", function (event) {
   event.preventDefault();
+  event.stopPropagation();
 
   const inputText = document.querySelector(".form__input--text");
   const inputSelect = document.querySelector(".form__input--priority");

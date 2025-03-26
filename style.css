@@ -92,6 +92,7 @@ h2 {
   border-radius: 4px;
   color: white;
   background-color: #3b5bdb;
+  cursor: pointer;
 }
 .tasks__list {
   margin-top: 10px;
